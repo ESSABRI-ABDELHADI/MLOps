@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-         repo-token: ${{ secrets.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 }}
+          repo-token: ${{ secrets.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 }}
         
       # may need to setup NodeJS & Python3 on e.g. self-hosted
       # - uses: actions/setup-node@v3
@@ -20,15 +20,14 @@ jobs:
       - uses: iterative/setup-cml@v1
       - name: Train model
         env:
-         GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.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 }}
+          CML_GITHUB_TOKEN: ${{ secrets.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 }}
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
           python train.py
 
-          echo " MODEL METRICS MESURE " 
+          echo "MODEL METRICS MESURE" 
           cat metrics.txt 
 
           cml-publish residuals.png --md >> report.md
-
-          
