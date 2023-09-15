@@ -21,6 +21,9 @@ jobs:
           pip install -r requirements.txt
           python train.py
 
+        env:
+            CML_GITHUB_TOKEN: ${{secrets.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}}
+
           echo " MODEL METRICS MESURE " 
           cat metrics.txt 
 
